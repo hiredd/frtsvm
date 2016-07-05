@@ -1,12 +1,12 @@
 function  [frtsvm_struct] = frtsvmtrain(Traindata,Trainlabel,Parameter)
-% [A,B,C_label,alpha,gama,z1,z2,ExpendTime,ExpendQPTime] = Tsvmtrain(train_data,train_label,ker,cp,p1,p2,ep)
-% train_data 
-% train_label 
-% c1 c2 ˫
-% p1 p2 ˫
-%  Author: gaobin (gaobin@163.com)
-if ( nargin>3||nargin<3) % check correct number of arguments
-    help  ftsvmtrain
+
+%  Author: Bin-Bin Gao 
+%  Email:csgaobb@gmail.com
+%  July 5, 2016
+
+% check correct number of arguments
+if ( nargin>3||nargin<3) 
+    help  frtsvmtrain
 end
 
 ker=Parameter.ker;
@@ -42,7 +42,7 @@ Xn=scTraindata(groupIndex==-1,:);
 Ln=Trainlabel(groupIndex==-1);
 X=[Xp;Xn];
 L=[Lp;Ln];
-[sp,sn,NXpv,NXnv]=Gbbftsvm(Xp,Xn,Parameter);
+[sp,sn,NXpv,NXnv]=Gbbfrtsvm(Xp,Xn,Parameter);
 
 lp=sum(groupIndex==1);
 ln=sum(groupIndex==-1);
@@ -74,8 +74,8 @@ switch ker
 end
 S=[Kpx ones(lp,1)];R=[Knx ones(ln,1)];
 
-CC1=CC*sn;%c1lb 
-CC2=CC*sp;%c2lb 
+CC1=CC*sn;
+CC2=CC*sp;
 
 fprintf('Optimising ...\n');
 switch  Parameter.algorithm
@@ -97,21 +97,6 @@ switch  Parameter.algorithm
         
         vp=-QR*alpha;
         vn=QS*gama;
-    case  'QP'
-        QR=(S'*S+CR*eye(size(S'*S)))\R';
-        RQR=R*QR;
-        RQR=(RQR+RQR')/2;
-        
-        QS=(R'*R+CR*eye(size(R'*R)))\S';
-        SQS=S*QS;
-        SQS=(SQS+SQS')/2;
-        
-        qp_opts = optimset('display','off');
-        [alpha,~,~]=quadprog(RQR,-ones(ln,1),[],[],[],[],zeros(ln,1),CC1,zeros(ln,1),qp_opts);
-        [beta,~,~]=quadprog(SQS,-ones(lp,1),[],[],[],[],zeros(lp,1),CC2,zeros(lp,1),qp_opts);
-        
-        vp=-QR*alpha;
-        vn=QS*beta;
 end
 ExpendTime=cputime - st1;
 frtsvm_struct.scaleData=scaleData;

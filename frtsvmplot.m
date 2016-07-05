@@ -1,6 +1,11 @@
 function [h] = frtsvmplot(frtsvm_struct,Traindata,Trainlabel)
-if (nargin <1|| nargin > 3) % check correct number of arguments
-    help ffrtsvmplot
+%  Author: Bin-Bin Gao 
+%  Email:csgaobb@gmail.com
+%  July 5, 2016
+
+
+if (nargin <1|| nargin > 3)
+    help frtsvmplot
 else
 
   

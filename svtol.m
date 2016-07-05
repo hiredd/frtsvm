@@ -7,12 +7,11 @@ function tol = svtol(C)
 %
 %  Author: Steve Gunn (srg@ecs.soton.ac.uk)
 
-
-  if (nargin ~= 1) % check correct number of arguments
+  if (nargin ~= 1)
     help svtol
   else
 
-    % tolerance for Support Vector Detection
+% tolerance for Support Vector Detection
     if C==Inf 
       tol = 1e-5;
     else

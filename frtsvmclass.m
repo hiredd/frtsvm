@@ -1,6 +1,10 @@
 function [acc,outclass,f,fp,fn,ExpendTime]= frtsvmclass(frtsvm_struct,Testdata,Testlabel)
+%  Author: Bin-Bin Gao 
+%  Email:csgaobb@gmail.com
+%  July 5, 2016
 
-if ( nargin>3||nargin<2) % check correct number of arguments
+% check correct number of arguments
+if ( nargin>3||nargin<2) 
     help frtsvmclass
 else
     [rt,ct]=size(Testdata);

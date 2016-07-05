@@ -1,8 +1,12 @@
-function [sp,sn,XPnoise,XNnoise,ET]=Gbbftsvm(Xp,Xn,Parameter)
-%  Author: gaobin (gaobinsw@163.com)
+function [sp,sn,XPnoise,XNnoise,ET]=Gbbfrtsvm(Xp,Xn,Parameter)
+%  Author: Bin-Bin Gao 
+%  Email:csgaobb@gmail.com
+%  July 5, 2016
 
-if ( nargin>3||nargin<3) % check correct number of arguments
-    help Gbbftsvm
+% check correct number of arguments
+
+if ( nargin>3||nargin<3) 
+    help Gbbfrtsvm
 else
     if (nargin<3) Parameter.ker='linear'; end
     Parameter.u = 0.1;

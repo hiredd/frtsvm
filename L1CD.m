@@ -1,6 +1,12 @@
 
 function  [alpha ,v,iter] = L1CD(H,G,cm,cp,eps,max_iter)
-if ( nargin>6||nargin<4) % check correct number of arguments
+%  Author: Bin-Bin Gao 
+%  Email:csgaobb@gmail.com
+%  July 5, 2016
+
+% check correct number of arguments
+
+if ( nargin>6||nargin<4) 
     help L1CD
 else
     [~,columnH]=size(H);

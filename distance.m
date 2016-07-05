@@ -1,5 +1,10 @@
 function [distance_xiX,xixing]=distance(xi,X)
-if ( nargin>2||nargin<2) % check correct number of arguments
+%  Author: Bin-Bin Gao 
+%  Email:csgaobb@gmail.com
+%  July 5, 2016
+
+% check correct number of arguments
+if ( nargin>2||nargin<2) 
     help distance
 else
     [rx,cx]=size(X);

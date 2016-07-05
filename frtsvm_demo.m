@@ -1,3 +1,9 @@
+%  Author: Bin-Bin Gao 
+%  Email:csgaobb@gmail.com
+%  July 5, 2016
+
+
+
 addpath(genpath('data'));
 clc
 clear
