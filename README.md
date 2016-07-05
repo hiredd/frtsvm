@@ -1,2 +1,2 @@
 # frtsvm
-A fast and robust twin support vector machine for pattern classification
+The package includes the MATLAB code of FRTSVM, which is designed for fast and robust classification.
