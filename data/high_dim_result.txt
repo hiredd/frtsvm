@@ -1,7 +1,0 @@
-
-29-Jun-2016 10:28:42,# FR-TSVM, #dataname:  monks3 #size= 122x 6 #ker=linear #C= 0.0039 #Gama= 2.0000 #Sigma=  0.0000 #Acc=72.69 #Time= 0.0200
- 29-Jun-2016 10:28:52,#    TSVM, #dataname:  monks3 #size= 122x 6 #ker=linear #C= 32.0000 #Gama= 0.0000 #Sigma=  0.0000 #Acc=52.78 #Time= 0.0800
- 29-Jun-2016 10:29:02,#    TSVM, #dataname:  monks3 #size= 122x 6 #ker=linear #C= 1.0000 #Gama= 0.0000 #Sigma=  0.0000 #Acc=74.31 #Time= 0.0900
-
-29-Jun-2016 10:30:17,# FR-TSVM, #dataname:  monks3 #size= 122x 6 #ker=linear #C= 32.0000 #Gama= 0.5000 #Sigma=  0.0000 #Acc=74.31 #Time= 0.0200
- 29-Jun-2016 10:30:42,#    TSVM, #dataname:  monks3 #size= 122x 6 #ker=linear #C= 0.5000 #Gama= 0.0000 #Sigma=  0.0000 #Acc=74.31 #Time= 0.0700
