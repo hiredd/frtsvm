@@ -1,5 +1,4 @@
 function  [frtsvm_struct] = frtsvmtrain(Traindata,Trainlabel,Parameter)
-
 %  Author: Bin-Bin Gao 
 %  Email:csgaobb@gmail.com
 %  July 5, 2016
@@ -17,7 +16,7 @@ Parameter.showplots=0;
 autoScale=Parameter.autoScale;
 
 % 1 
-st1 = cputime;
+tic;
 [groupIndex, groupString] = grp2idx(Trainlabel);
 groupIndex = 1 - (2* (groupIndex-1));
 scaleData = [];
@@ -42,7 +41,7 @@ Xn=scTraindata(groupIndex==-1,:);
 Ln=Trainlabel(groupIndex==-1);
 X=[Xp;Xn];
 L=[Lp;Ln];
-[sp,sn,NXpv,NXnv]=Gbbfrtsvm(Xp,Xn,Parameter);
+[sp,sn,NXpv,NXnv]=fm(Xp,Xn,Parameter);
 
 lp=sum(groupIndex==1);
 ln=sum(groupIndex==-1);
@@ -79,26 +78,26 @@ CC2=CC*sp;
 
 fprintf('Optimising ...\n');
 switch  Parameter.algorithm
-    case  'CD'
+    case  'cd'
         [alpha ,vp] =  L1CD(S,R,CR,CC1);
         [beta , vn] =  L1CD(R,S,CR,CC2);
         vn=-vn;
     case  'qp'
-        QR=(S'*S+CR*eye(lp+ln+1))\R';
+        QR=(S'*S+CR*eye(size(S'*S)))\R';
         RQR=R*QR;
         RQR=(RQR+RQR')/2;
         
-        QS=(R'*R+CR*eye(lp+ln+1))\S';
+        QS=(R'*R+CR*eye(size(R'*R)))\S';
         SQS=S*QS;
         SQS=(SQS+SQS')/2;
 
-        [alpha,~,~]=qp(RQR,-ones(ln,1),[],[],zeros(ln,1),CC1,ones(ln,1));ftsvm_struct
+        [alpha,~,~]=qp(RQR,-ones(ln,1),[],[],zeros(ln,1),CC1,ones(ln,1));
         [beta,~,~] =qp(SQS,-ones(lp,1),[],[],zeros(lp,1),CC2,ones(lp,1));
         
         vp=-QR*alpha;
-        vn=QS*gama;
+        vn=QS*beta;
 end
-ExpendTime=cputime - st1;
+Time= toc;
 frtsvm_struct.scaleData=scaleData;
 
 frtsvm_struct.X = X;
@@ -115,7 +114,7 @@ frtsvm_struct.KernelFunction = kfun;
 frtsvm_struct.KernelFunctionArgs = kfunargs;
 frtsvm_struct.Parameter = Parameter;
 frtsvm_struct.groupString=groupString;
-frtsvm_struct.time=ExpendTime;
+frtsvm_struct.time=Time;
 
 frtsvm_struct.NXpv=NXpv;
 frtsvm_struct.NXnv=NXnv;
