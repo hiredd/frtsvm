@@ -1,4 +1,4 @@
-% This is a demo for runing linear and nonlinear FRTSVM
+% This is a demo for running linear and nonlinear FRTSVM
 %  Author: Bin-Bin Gao 
 %  Email: csgaobb@gmail.com
 %  July 5, 2016
