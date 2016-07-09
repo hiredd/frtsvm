@@ -9,5 +9,4 @@ The package includes the MATLAB code of FRTSVM, which is designed for fast and r
 
 In matlab, run demo.m.
 
-
-If you have any problems about the package, you can contact me by email (csgaobb@gmail.com).
+For any questions and comments, please send your email to csgaobb@gmail.com.
