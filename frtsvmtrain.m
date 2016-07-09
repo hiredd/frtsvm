@@ -79,8 +79,8 @@ CC2=CC*sp;
 fprintf('Optimising ...\n');
 switch  Parameter.algorithm
     case  'cd'
-        [alpha ,vp] =  L1CD(S,R,CR,CC1);
-        [beta , vn] =  L1CD(R,S,CR,CC2);
+        [alpha ,vp] = cd(S,R,CR,CC1);
+        [beta , vn] = cd(R,S,CR,CC2);
         vn=-vn;
     case  'qp'
         QR=(S'*S+CR*eye(size(S'*S)))\R';
