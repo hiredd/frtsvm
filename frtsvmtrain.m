@@ -79,7 +79,7 @@ CC2=CC*sp;
 fprintf('Optimising ...\n');
 switch  Parameter.algorithm
     case  'cd'
-        [alpha ,vp] = cd(S,R,CR,CC1);
+        [alpha, vp] = cd(S,R,CR,CC1);
         [beta , vn] = cd(R,S,CR,CC2);
         vn=-vn;
     case  'qp'
